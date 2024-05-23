@@ -4,8 +4,7 @@ from django.contrib.auth.models import AbstractUser, UserManager
 
 
 # Create your models here.
-
-class CustomUserMannger(UserManager):
+class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         if not email:
             raise ValueError("The given email must be set")
@@ -34,12 +33,11 @@ class CustomUserMannger(UserManager):
 
 class CustomUser(AbstractUser):
     username = None
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=32, blank=True, null=True)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["email"]
+    REQUIRED_FIELDS = []
 
-    objects = CustomUserMannger()
-
+    objects = CustomUserManager()
