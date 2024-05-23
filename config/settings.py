@@ -40,13 +40,13 @@ INSTALLED_APPS = [
 
 
     # apps
-    'accounts',
+    'users',
 
 
     # third party apps
     'rest_framework',
 ]
-AUTH_USER_MODEL = "accounts.CustomUser"
+AUTH_USER_MODEL = "users.CustomUser"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
