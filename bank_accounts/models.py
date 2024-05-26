@@ -26,4 +26,22 @@ class BankAccount(models.Model):
         return f"{self.bank.name} - {self.account_number}"
 
     class Meta:
-        pass
+        verbose_name = 'Bank Account'
+        verbose_name_plural = 'Bank Accounts'
+
+# TODO: best practice
+# TODO: CASCADE OR ...
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            self.save()
+            return True
+        return False
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.balance:
+            self.balance -= amount
+            self.save()
+            return True
+        return False
