@@ -9,7 +9,8 @@ class Bank(models.Model):
     avatar = models.ImageField()
 
     class Meta:
-        pass
+        verbose_name = 'Bank'
+        verbose_name_plural = 'Banks'
 
 
 class BankAccount(models.Model):
