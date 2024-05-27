@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     # apps
     'users',
+    'bank_accounts',
+    'transactions',
 
 
     # third party apps
