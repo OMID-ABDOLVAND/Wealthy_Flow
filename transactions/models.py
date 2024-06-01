@@ -32,12 +32,17 @@ class Transaction(models.Model):
         WITHDRAWAL = 'Withdrawal', 'Withdrawal'
         TRANSFER = 'Transfer', 'Transfer'
 
-    def generate_transaction_id():
+    class Status(models.TextChoices):
+        SAVE = 'Save', 'Save'
+        DRAFT = 'Draft', 'Draft'
+
+    def generate_transaction_id(self):
         return str(uuid.uuid4())
 
     transaction_id = models.CharField(max_length=36, unique=True,
                                       default=generate_transaction_id, editable=False)
-    transaction_type = models.CharField(max_length=20, choices=TRANSACTION_TYPES)
+    transaction_type = models.CharField(max_length=20, choices=TransactionType)
+    transaction_status = models.CharField(max_length=36, choices=Status, default=Status.DRAFT)
     amount = models.IntegerField(max_length=50)
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(null=True, blank=True)
