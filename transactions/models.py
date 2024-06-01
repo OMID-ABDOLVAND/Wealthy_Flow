@@ -27,11 +27,10 @@ class Category(models.Model):
 
 
 class Transaction(models.Model):
-    TRANSACTION_TYPES = (
-        ('Deposit', 'Deposit'),
-        ('Withdrawal', 'Withdrawal'),
-        ('Transfer', 'Transfer'),
-    )
+    class TransactionType(models.TextChoices):
+        DEPOSIT = 'Deposit', 'Deposit'
+        WITHDRAWAL = 'Withdrawal', 'Withdrawal'
+        TRANSFER = 'Transfer', 'Transfer'
 
     def generate_transaction_id():
         return str(uuid.uuid4())
