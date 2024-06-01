@@ -8,8 +8,10 @@ import uuid
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    user = models.ForeignKey(get_user_model, on_delete=models.CASCADE, related_name='categories')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='categories')
     default = models.BooleanField(default=False)
+    avatar = models.ImageField(null=True, blank=True)
+
     # TODO: show category thats admin add and owner add
 
     def __str__(self):
