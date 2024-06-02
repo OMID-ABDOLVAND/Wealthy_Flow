@@ -15,6 +15,11 @@ class CategoryViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return Category.objects.filter(Q(user=user) | Q(default=True))
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    # todo: handle permissions for partial_update
+
 
 class TransactionViewSet(viewsets.ModelViewSet):
     serializer_class = TransactionSerializer
