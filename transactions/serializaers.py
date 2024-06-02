@@ -9,11 +9,6 @@ class CategorySerializer(ModelSerializer):
     class Meta:
         model = Category
         fields = ['name', 'avatar']
-        read_only_fields = ['name', 'avatar']
-
-    def create(self, validated_data):
-        # TODO:handle perform crate in view
-        return super().create(validated_data)
 
 
 class TransactionSerializer(ModelSerializer):
