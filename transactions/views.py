@@ -3,6 +3,7 @@ from djongo.models import Q
 # Create your views here.
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+from config.permissions import IsOwnerOrAdmin
 from transactions.models import Category, Transaction
 from transactions.serializaers import CategorySerializer, TransactionSerializer
 
@@ -18,7 +19,13 @@ class CategoryViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    # todo: handle permissions for partial_update
+    def get_permissions(self):
+        if self.action in ['destroy', 'partial_update', 'update']:
+            return [IsOwnerOrAdmin()]
+        return super().get_permissions()
+
+    # todo: test and then checkout done
+
 
 
 class TransactionViewSet(viewsets.ModelViewSet):
