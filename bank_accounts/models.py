@@ -15,7 +15,7 @@ class Bank(models.Model):
 
 class BankAccount(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    bank = models.EmbeddedField(model_container=Bank)
+    bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
     account_number = models.CharField(max_length=20, unique=True)
     balance = models.IntegerField()
     minimum_balance_requirement = models.IntegerField(default=0)
