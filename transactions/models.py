@@ -41,9 +41,9 @@ class Transaction(models.Model):
 
     transaction_id = models.CharField(max_length=36, unique=True,
                                       default=generate_transaction_id, editable=False)
-    transaction_type = models.CharField(max_length=20, choices=TransactionType)
-    transaction_status = models.CharField(max_length=36, choices=Status, default=Status.DRAFT)
-    amount = models.IntegerField(max_length=50)
+    transaction_type = models.CharField(max_length=20, choices=TransactionType.choices)
+    transaction_status = models.CharField(max_length=36, choices=Status.choices, default=Status.DRAFT)
+    amount = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(null=True, blank=True)
     bank_account = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='transactions_bank')
