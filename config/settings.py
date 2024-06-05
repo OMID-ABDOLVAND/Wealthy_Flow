@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 
     # third party apps
     'rest_framework',
+    'drf_yasg',
+
 ]
 AUTH_USER_MODEL = "users.CustomUser"
 
