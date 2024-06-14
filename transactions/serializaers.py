@@ -12,7 +12,7 @@ class CategorySerializer(ModelSerializer):
 
 
 class TransactionSerializer(ModelSerializer):
-    # TODO:handle bank account and category joins
+    # TODO:handle bank account and category joins research about nested serializer
     class Meta:
         model = Transaction
         fields = ['transaction_id', 'transaction_type', 'transaction_status', 'amount', 'date', 'description', ]

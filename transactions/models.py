@@ -36,7 +36,8 @@ class Transaction(models.Model):
         SAVE = 'Save', 'Save'
         DRAFT = 'Draft', 'Draft'
 
-    def generate_transaction_id(self):
+    @staticmethod
+    def generate_transaction_id():
         return str(uuid.uuid4())
 
     transaction_id = models.CharField(max_length=36, unique=True,

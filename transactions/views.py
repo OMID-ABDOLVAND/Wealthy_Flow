@@ -36,4 +36,4 @@ class TransactionViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        return Transaction.objects.filter(transactions_bank=user)
+        return Transaction.objects.filter(transactions_bank=user)  # todo: is it working true?
