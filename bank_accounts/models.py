@@ -8,6 +8,9 @@ class Bank(models.Model):
     name = models.CharField(max_length=255)
     avatar = models.ImageField()
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Bank'
         verbose_name_plural = 'Banks'
