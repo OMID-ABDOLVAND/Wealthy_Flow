@@ -30,7 +30,6 @@ class Transaction(models.Model):
     class TransactionType(models.TextChoices):
         DEPOSIT = 'Deposit', 'Deposit'
         WITHDRAWAL = 'Withdrawal', 'Withdrawal'
-        TRANSFER = 'Transfer', 'Transfer'
 
     class Status(models.TextChoices):
         SAVE = 'Save', 'Save'
