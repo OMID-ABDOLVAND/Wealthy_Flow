@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
-from transactions.urls import router as transactions_router
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from transactions.urls import router as transactions_router
+from bank_accounts.urls import router as bank_accounts_router
+
 
 # document config
 schema_view = get_schema_view(
@@ -40,6 +42,7 @@ schema_view = get_schema_view(
 # router onfig
 router = DefaultRouter()
 router.registry.extend(transactions_router.registry)
+router.registry.extend(bank_accounts_router.registry)
 
 
 urlpatterns = [
