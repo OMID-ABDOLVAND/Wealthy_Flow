@@ -4,6 +4,7 @@ from djongo import models
 # Create your models here.
 
 
+# we just need model and handle in django admin panel
 class Bank(models.Model):
     name = models.CharField(max_length=255)
     avatar = models.ImageField()
