@@ -14,9 +14,10 @@ class BankAccountViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
 
     def get_queryset(self):
+        # Return only the bank accounts owned by the authenticated user
         return BankAccount.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
+        # Automatically associate the bank account with the authenticated user
         serializer.save(user=self.request.user)
-
 
